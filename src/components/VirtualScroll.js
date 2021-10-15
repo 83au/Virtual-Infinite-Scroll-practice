@@ -1,14 +1,9 @@
 import React from 'react';
-import { useInView } from "react-intersection-observer";
-
-/**
- * A wrapper component for children of
- * VirtualScroll. Computes inline style and
- * handles whether to display props.children.
- */
+import useOnScreen from '../hooks/useOnScreen';
+// import { useInView } from "react-intersection-observer";
 
 function VirtualScroll({ height, children }) {
-    const [ref, inView] = useInView();
+    const [ref, visible] = useOnScreen();
 
     const style = {
         height: `${height}px`,
@@ -17,7 +12,7 @@ function VirtualScroll({ height, children }) {
     
     return (
         <div style={style} ref={ref}>
-            {inView ? children : null}
+            {visible ? children : null}
         </div>
     );
 }
