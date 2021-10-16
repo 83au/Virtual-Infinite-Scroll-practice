@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useImages } from '../contexts/ImagesContext';
 
-function Form({ setQuery }) {
+function SearchImagesForm() {
   const [inputVal, setInputVal] = useState('');
+  const { setQuery } = useImages();
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -25,4 +27,4 @@ function Form({ setQuery }) {
   )
 }
 
-export default Form;
+export default SearchImagesForm;

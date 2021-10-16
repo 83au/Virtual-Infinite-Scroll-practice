@@ -1,13 +1,11 @@
-import { useState } from 'react';
-import Form from './Form';
+import SearchImagesForm from './SearchImagesForm';
 import ImagesList from './ImagesList';
 
 function App() {
-  const [query, setQuery] = useState('');
   return (
     <div className="App">
-      <Form setQuery={setQuery} />
-      <ImagesList query={query} />
+      <SearchImagesForm />
+      <ImagesList  />
     </div>
   );
 }

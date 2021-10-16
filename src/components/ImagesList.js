@@ -1,23 +1,9 @@
-import { useState, useEffect, useCallback } from 'react'
 import VirtualScroll from './VirtualScroll';
 import InfiniteScroll from './InfiniteScroll';
-import getImages from '../api/getImages';
+import { useImages } from '../contexts/ImagesContext';
 
-function ImagesList({ query }) {
-  const [pageNum, setPageNum] = useState(1);
-  const [images, setImages] = useState([]);
-
-  const nextPage = useCallback(() => {
-    setPageNum(prevPageNum => prevPageNum + 1);
-  }, []);
-
-  useEffect(() => {
-    const handleGetImages = async () => {
-      const result = await getImages(query, pageNum);
-      setImages(prevImages => [...prevImages, ...result]);
-    }
-    handleGetImages();
-  }, [pageNum, query])
+function ImagesList() {
+  const { images, nextPage } = useImages();
 
   const listItems = images.map((image, index) => (
     <li key={Math.random() * index} className="ImagesList__list-item">

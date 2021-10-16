@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'; 
 import useOnScreen from '../hooks/useOnScreen';
-// import { useInView } from 'react-intersection-observer'; 
 
 function InfiniteScroll({ listItems, lastRowHandler }) {
   const [lastRowRef, lastRowInView] = useOnScreen();
